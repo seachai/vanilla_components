@@ -3,6 +3,11 @@ let minus = document.getElementsByClassName("fa-minus");
 const accordion = document.getElementsByClassName("accordion-title");
 let panel = document.getElementsByClassName("accordion-panel");
 const carouselCards = document.getElementsByClassName("carousel-card");
+const joinBtn = document.getElementById("join-btn");
+const modal = document.querySelector(".join-modal");
+const joinModalBtn = document.querySelector(".modal-btn");
+const loadingModal = document.querySelector(".loading");
+const modalExitBtn = document.querySelector(".fa-times");
 
 const togglePanel = () => {
   for (let i = 0; i < accordion.length; i++) {
@@ -28,14 +33,26 @@ togglePanel();
 const selectedCards = () => {
   for (let i = 0; i < carouselCards.length; i++) {
     carouselCards[i].addEventListener("click", () => {
-      console.log("hello");
-      if (!carouselCards[i].style.border) {
-        carouselCards[i].style.border = "3px solid green";
-      } else {
-        carouselCards[i].style.border = "";
-      }
+      if (carouselCards[i].classList.contains("active")) {
+        carouselCards[i].classList.remove("active");
+      } else carouselCards[i].classList.add("active");
     });
   }
 };
 
 selectedCards();
+
+const toggleModal = () => {
+  joinBtn.addEventListener("click", () => {
+    modal.classList.toggle("hide-modal");
+  });
+  joinModalBtn.addEventListener("click", () => {
+    modal.classList.toggle("hide-modal");
+    loadingModal.classList.remove("hide-modal");
+  });
+  modalExitBtn.addEventListener("click", () => {
+    modal.classList.toggle("hide-modal");
+  });
+};
+
+toggleModal();
