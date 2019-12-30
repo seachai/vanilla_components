@@ -227,20 +227,57 @@ p {
 
 .carousel {
   display: flex;
+  position: relative;
 }
 
 .carousel button {
-  height: 50px;
 }
 
 .carousel-card {
-  background-image: url("https://source.unsplash.com/random");
+  height: 500px;
+  width: 100%;
+  /* background-image: url("https://source.unsplash.com/random");
   background-size: cover;
   height: 250px;
   width: 100%;
   margin: 0 2rem;
   border: 3px solid transparent;
+  cursor: pointer; */
+}
+
+/* Carousel Ends */
+
+.find-pet {
+  text-align: center;
+  margin: 5rem 0;
+}
+.pet-card {
+  margin: 0 auto;
+  width: 50%;
+  border: 1px solid #333;
+}
+.pet-image {
+  background-image: url("https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/19990550_320504011710462_6233984476058453731_n.jpg?_nc_cat=108&_nc_oc=AQmLCSn3xWMC415hJl8KgHomfGd1sfQNbfaTkIQQWolCzhQZPyD2LD9eRjhPinoKnlw&_nc_ht=scontent-iad3-1.xx&oh=929469f88bf7dad3e3f706c77d4cd1bf&oe=5E67E3FA");
+  background-size: cover;
+  width: 100%;
+  height: 600px;
+  background-repeat: no-repeat;
+}
+
+#pet-btn {
+  padding: 20px 40px;
+  color: #333;
+  border: 1px solid pink;
+  outline: none;
   cursor: pointer;
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+
+#pet-btn:hover {
+  color: #fff;
+  background-color: pink;
+  border-color: #c66262;
 }
 
 /* Join Modal Start */
