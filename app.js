@@ -2,7 +2,7 @@ let plus = document.getElementsByClassName("fa-plus");
 let minus = document.getElementsByClassName("fa-minus");
 const accordion = document.getElementsByClassName("accordion-title");
 let panel = document.getElementsByClassName("accordion-panel");
-const carouselCards = document.getElementsByClassName("carousel-card");
+const carouselCards = document.querySelectorAll(".carousel-card");
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
 const petBtn = document.getElementById("pet-btn");
@@ -85,32 +85,38 @@ const carousel = () => {
 
 carousel();
 
-// const selectedCards = () => {
-//   for (let i = 0; i < carouselCards.length; i++) {
-//     carouselCards[i].addEventListener("click", () => {
-//       if (carouselCards[i].classList.contains("active")) {
-//         carouselCards[i].classList.remove("active");
-//       } else carouselCards[i].classList.add("active");
-//     });
-//   }
-// };
+const selectedCards = () => {
+  carouselCards.forEach(image => {
+    image.addEventListener("click", () => {
+      carouselCards.forEach(image => image.classList.remove("active"));
+      image.classList.add("active");
+    });
+  });
+  // for (let i = 0; i < carouselCards.length; i++) {
+  //   carouselCards[i].addEventListener("click", () => {
+  //     console.log(carouselCards);
+  //     carouselCards.classList.remove("active");
+  //     carouselCards[i].classList.add("active");
+  //   });
+  // }
+};
 
-// selectedCards();
+selectedCards();
 
-// const toggleModal = () => {
-//   joinBtn.addEventListener("click", () => {
-//     modal.classList.toggle("hide-modal");
-//   });
-//   joinModalBtn.addEventListener("click", () => {
-//     modal.classList.toggle("hide-modal");
-//     loadingModal.classList.remove("hide-modal");
-//   });
-//   modalExitBtn.addEventListener("click", () => {
-//     modal.classList.toggle("hide-modal");
-//   });
-// };
+const toggleModal = () => {
+  joinBtn.addEventListener("click", () => {
+    modal.classList.toggle("hide-modal");
+  });
+  joinModalBtn.addEventListener("click", () => {
+    modal.classList.toggle("hide-modal");
+    loadingModal.classList.remove("hide-modal");
+  });
+  modalExitBtn.addEventListener("click", () => {
+    modal.classList.toggle("hide-modal");
+  });
+};
 
-// toggleModal();
+toggleModal();
 
 const colorBar = document.getElementById("color-bar");
 

@@ -229,8 +229,8 @@ p {
   display: flex;
   position: relative;
 }
-
-.carousel button {
+.active {
+  border: 5px solid black;
 }
 
 .carousel-card {
