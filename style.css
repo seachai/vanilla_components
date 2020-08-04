@@ -54,7 +54,6 @@ p {
 }
 
 .navbar > li > a:hover {
-  /* color: red; */
   color: #323232;
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid #323232;
@@ -122,7 +121,6 @@ p {
 }
 
 /* Paragraph Cards */
-
 .info--grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -167,7 +165,6 @@ p {
 /* Paragraph Cards End */
 
 /* Accordion JavaScript */
-
 .accordion {
   max-width: 800px;
   margin: 0 auto;
@@ -257,7 +254,7 @@ p {
   border: 1px solid #333;
 }
 .pet-image {
-  background-image: url("https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/19990550_320504011710462_6233984476058453731_n.jpg?_nc_cat=108&_nc_oc=AQmLCSn3xWMC415hJl8KgHomfGd1sfQNbfaTkIQQWolCzhQZPyD2LD9eRjhPinoKnlw&_nc_ht=scontent-iad3-1.xx&oh=929469f88bf7dad3e3f706c77d4cd1bf&oe=5E67E3FA");
+  background-color: #201c29;
   background-size: cover;
   width: 100%;
   height: 600px;
@@ -357,7 +354,7 @@ p {
 
 .progress-bar {
   height: 8px;
-  background: red;
+  background: linear-gradient(to left, #2e98bc 0%, #c66262 100%);
   width: 0%;
 }
 

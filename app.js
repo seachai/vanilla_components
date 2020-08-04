@@ -1,53 +1,64 @@
-let plus = document.getElementsByClassName("fa-plus");
-let minus = document.getElementsByClassName("fa-minus");
-const accordion = document.getElementsByClassName("accordion-title");
-let panel = document.getElementsByClassName("accordion-panel");
+const plus = document.querySelectorAll(".fa-plus");
+const minus = document.querySelectorAll(".fa-minus");
+const accordion = document.querySelectorAll(".accordion-title");
+const panel = document.querySelectorAll(".accordion-panel");
+
 const carouselCards = document.querySelectorAll(".carousel-card");
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
+
 const petBtn = document.getElementById("pet-btn");
+
 const joinBtn = document.getElementById("join-btn");
 const modal = document.querySelector(".join-modal");
 const joinModalBtn = document.querySelector(".modal-btn");
 const loadingModal = document.querySelector(".loading");
 const modalExitBtn = document.querySelector(".fa-times");
 
-const togglePanel = () => {
+const toggleAccordion = () => {
+  const togglePanel = currentIndex => {
+    // toggle the current panel
+    let showPanel = panel[currentIndex].classList.toggle("show-panel");
+    let currentPanel = panel[currentIndex];
+    let currentPlusIcon = plus[currentIndex];
+    let currentMinusIcon = minus[currentIndex];
+
+    // if true, set acoordian height
+    if (showPanel) {
+      currentPanel.style.maxHeight = currentPanel.scrollHeight + "px";
+      currentPlusIcon = currentPlusIcon.style.display = "none";
+      currentMinusIcon = currentMinusIcon.style.display = "block";
+    }
+
+    // if false, remove the height
+    if (!showPanel) {
+      currentPanel = currentPanel.style.maxHeight = "0px";
+      currentPlusIcon = currentPlusIcon.style.display = "block";
+      currentMinusIcon = currentMinusIcon.style.display = "none";
+    }
+  };
+
   for (let i = 0; i < accordion.length; i++) {
-    accordion[i].addEventListener("click", () => {
-      panel[i].classList.toggle("show-panel");
-
-      let checkMinus = panel[i].classList.contains("show-panel")
-        ? ((panel[i] = panel[i].style.maxHeight = panel[i].scrollHeight + "px"),
-          (plus[i] = plus[i].style.display = "none"),
-          (minus[i] = minus[i].style.display = "block"))
-        : (panel[i] = panel[i].style.maxHeight = "0px")(
-            (plus[i] = plus[i].style.display = "block"),
-            (minus[i] = minus[i].style.display = "none")
-          );
-
-      return checkMinus;
-    });
+    accordion[i].addEventListener("click", () => togglePanel(i));
   }
 };
 
-togglePanel();
+toggleAccordion();
 
 const fetchCat = () => {
   const petImage = document.querySelector(".pet-image");
   let image = "";
 
   async function requestImage() {
-    const response = await fetch("https://api.thecatapi.com/v1/images/search")
+    image = await fetch("https://api.thecatapi.com/v1/images/search")
       .then(res => res.json())
-      .then(res => (image = res[0].url))
+      .then(res => res[0].url)
       .catch(error => console.log(error));
   }
 
-  function changeImage() {
-    requestImage();
-    petImage.style.backgroundImage = "url(" + image + ")";
-    console.log(petImage.style.backgroundImage);
+  async function changeImage() {
+    await requestImage();
+    petImage.style.backgroundImage = `url(${image})`;
   }
 
   petBtn.addEventListener("click", changeImage);
@@ -92,13 +103,6 @@ const selectedCards = () => {
       image.classList.add("active");
     });
   });
-  // for (let i = 0; i < carouselCards.length; i++) {
-  //   carouselCards[i].addEventListener("click", () => {
-  //     console.log(carouselCards);
-  //     carouselCards.classList.remove("active");
-  //     carouselCards[i].classList.add("active");
-  //   });
-  // }
 };
 
 selectedCards();
